@@ -1,4 +1,4 @@
-# 1. Mục tiêu:
+# 1. Mục tiêu
 Áp dụng được các thuật toán tìm kiếm trong bộ môn Trí tuệ nhân tạo vào bài toán 8 puzzle, giúp chúng ta có thể hiểu được nguyên lý hoạt động của các thuật toán dễ dàng hơn, cụ thể là biết được trạng thái đầu, trạng thái cuối, quá trình thực hiện, và không gian lưu trữ, độ phức tạp giải thuật. Qua đó, người học có thể so sánh và đánh giá mức độ tối ưu của các thuật toán.
 
 # 2. Nội dung
