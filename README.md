@@ -66,7 +66,6 @@
 ![IDDFS](gif_files/IDDFS.gif)
 
 # 2.2. Các thuật toán tìm kiếm trong môi trường có thông tin (Informed Search Algorithms)
-### Greedy Best-First Search
 - Định nghĩa: Thuật toán tìm kiếm có thông tin (Informed Search Algorithms) là các thuật toán sử dụng thông tin bổ sung (heuristic) về khoảng cách hoặc ước lượng chi phí đến trạng thái đích để dẫn đường tìm kiếm.
 - Mục tiêu: Giúp tăng hiệu quả tìm kiếm bằng cách ưu tiên mở rộng các trạng thái có khả năng dẫn đến đích nhanh hơn.
 
