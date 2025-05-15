@@ -291,6 +291,50 @@ Q(s,a)=Q(s,a)+α×(reward+γ×max a′Q(s′,a′)−Q(s,a))
 - Việc nắm vững kiến thức từng thuật toán trong này là vô cùng quan trọng, bởi không chỉ giúp chúng ta lựa chọn thuật toán phù hợp nhất mà còn bảo đảm hiệu quả và tối ưu trong việc giải quyết vấn đề. Trong quá trình thực hiện đồ án này, có rất nhiều khó khăn phải trải qua, nhưng cũng đã tìm cách và giải quyết khắc phục những khó khăn đó.
 - Đồ án này không chỉ là tâm huyết của em mà cũng là sự cố gắng hết sức, nếu có sai xót hay chỗ nào còn chưa đúng thì đó cũng là một phần kinh nghiệm để giúp em hoàn thành tốt hơn nhưng đồ án sau.
 
+# 4. Tài liệu tham khảo
+https://wiki.vnoi.info/algo/graph-theory/breadth-first-search.md
+(Thuật toán BFS)
 
+https://wiki.vnoi.info/algo/graph-theory/Depth-First-Search-Tree.md
+(Thuật toán DFS)
+
+https://viblo.asia/p/cac-thuat-toan-co-ban-trong-ai-phan-biet-best-first-search-va-uniform-cost-search-ucs-Eb85omLWZ2G
+(Thuật toán UCS)
+
+https://www.geeksforgeeks.org/iterative-deepening-searchids-iterative-deepening-depth-first-searchiddfs/
+(Thuật toán IDDFS)
+
+https://www.geeksforgeeks.org/greedy-algorithms/
+(Thuật toán Greedy Search)
+
+https://www.geeksforgeeks.org/a-search-algorithm/
+(Thuật toán A*)
+
+https://www.geeksforgeeks.org/iterative-deepening-a-algorithm-ida-artificial-intelligence/
+(Thuật toán IDA*)
+
+https://www.geeksforgeeks.org/introduction-hill-climbing-artificial-intelligence/
+(Thuật toán Hill Climbing)
+
+https://www.geeksforgeeks.org/what-is-simulated-annealing/
+(Thuật toán Simulated Annealing)
+
+https://www.geeksforgeeks.org/introduction-to-beam-search-algorithm/
+(Thuật toán Beam Search)
+
+https://websitehcm.com/genetic-algorithm-thuat-toan-di-truyen-trong-python/
+(Thuật toán Genetic Algorithm)
+
+https://www.geeksforgeeks.org/generate-and-test-search/
+(Thuật toán Generate-And-Test)
+
+https://www.geeksforgeeks.org/backtracking-algorithms/
+(Thuật toán Backtracking)
+
+https://stackoverflow.com/questions/67324402/time-complexity-of-ac-3-algorithm
+(Thuật toán AC-3)
+
+https://viblo.asia/p/reinforcement-learning-q-learning-63vKjO7VZ2R
+(Q-Learning)
 
 
