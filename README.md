@@ -96,6 +96,19 @@
 + Nhược điểm: Duyệt lặp lại nhiều, chậm nếu heuristic yếu, khó tận dụng bộ nhớ như A*.
 ![IDAStar](gif_files/IDASTAR.gif)
 
+# Thuật toán Greedy Search
+- Ý tưởng: Greedy Search (Tìm kiếm tham lam) luôn chọn trạng thái có vẻ tốt nhất tại thời điểm hiện tại dựa trên hàm heuristic, không quan tâm đến chi phí đường đi từ điểm bắt đầu (khác với A*).
+- Nguyên lý hoạt động:Sử dụng hàng đợi ưu tiên để lưu trữ các trạng thái theo giá trị heuristic h(n), luôn mở rộng trạng thái có h(n) nhỏ nhất trong hàng đợi, đánh dấu các trạng thái đã duyệt để tránh lặp.
+Dừng khi tìm thấy trạng thái đích hoặc hết trạng thái để duyệt
+- Về đặc điểm:
++ Thời gian: O(b^m)
++ Không gian: O(b^m), cần lưu các trạng thái trong hàng đợi ưu tiên
++ Tính đầy đủ: Có(nếu không gian trạng thái hữu hạn)
++ Tính tối ưu: Không (vì chỉ dựa vào heuristic, không quan tâm chi phí đường đi).
++ Không gian trạng thái: Duyệt theo giá trị heuristic tăng dần.
++ Nhược điểm: Không đảm bảo tìm ra đường đi ngắn nhất, phụ thuộc nhiều vào chất lượng của hàm heuristic.
+![GreedySearch](gif_files/GreedySearch.gif)
+
 # 2.3. Các thuật toán tìm kiếm cục bộ (Local Search)
 ## Thuật toán Simple Hill Climbing (SHC)
 - Ý tưởng: Luôn chọn và di chuyển sang trạng thái con đầu tiên có giá trị heuristic tốt hơn trạng thái hiện tại (tức nhỏ hơn), với mục tiêu tối ưu dần.
