@@ -53,7 +53,7 @@
 + Nhược điểm: Tốn bộ nhớ và thời gian nếu không gian trạng thái lớn.
 ![UCS](gif_files/UCS.gif)
 
-# Thuật toán IDDFS
+## Thuật toán IDDFS
 - Ý tưởng: Kết hợp ưu điểm của DFS (ít tốn bộ nhớ) và BFS (tìm được lời giải ngắn nhất) bằng cách lặp lại DFS với độ sâu tăng dần.
 - Nguyên lý hoạt động: Thuật toán thực hiện tìm kiếm theo chiều sâu nhưng giới hạn độ sâu, sau đó tăng giới hạn dần lên và lặp lại cho đến khi tìm được lời giải. Trạng thái được kiểm tra lại nhiều lần ở các độ sâu khác nhau.
 - Về đặc điểm: 
@@ -69,7 +69,7 @@
 - Định nghĩa: Thuật toán tìm kiếm có thông tin (Informed Search Algorithms) là các thuật toán sử dụng thông tin bổ sung (heuristic) về khoảng cách hoặc ước lượng chi phí đến trạng thái đích để dẫn đường tìm kiếm.
 - Mục tiêu: Giúp tăng hiệu quả tìm kiếm bằng cách ưu tiên mở rộng các trạng thái có khả năng dẫn đến đích nhanh hơn.
 
-# Thuật toán A*
+## Thuật toán A*
 - Ý tưởng: A* kết hợp giữa chi phí thực từ điểm bắt đầu đến trạng thái hiện tại và chi phí ước lượng từ trạng thái hiện tại đến đích (sử dụng hàm heuristic) để chọn trạng thái mở rộng tiếp theo.
 - Nguyên lý hoạt động: Thuật toán sử dụng hàng đợi ưu tiên (Priority Queue), trong đó mỗi trạng thái có tổng chi phí được tính theo công thức f(n) = g(n) + h(n)
 + g(n) là chi phí thực từ điểm bắt đầu đến trạng thái n
@@ -84,7 +84,7 @@
 + Nhược điểm: Tốn bộ nhớ và phụ thuộc vào chất lượng của hàm heuristic.
 ![AStar](gif_files/ASTAR.gif)
 
-# Thuật toán IDA*
+## Thuật toán IDA*
 - Ý tưởng: IDA* kết hợp chiến lược lặp sâu dần (như IDDFS) với A* bằng cách sử dụng giới hạn f(n) = g(n) + h(n) và tăng giới hạn dần qua mỗi vòng lặp. Mục tiêu là tận dụng độ chính xác của A* mà vẫn tiết kiệm bộ nhớ.
 - Nguyên lý hoạt động: Tính f(n) = g(n) + h(n) cho trạng thái ban đầu và đặt làm giới hạn (bound), thực hiện tìm kiếm theo chiều sâu nhưng chỉ duyệt các trạng thái có f(n) ≤ bound, nếu chưa có lời giải, cập nhật bound bằng f(n) nhỏ nhất vượt quá giới hạn trước. Lặp lại cho đến khi tìm thấy lời giải hoặc hết trạng thái.
 - Về đặc điểm:
@@ -96,7 +96,7 @@
 + Nhược điểm: Duyệt lặp lại nhiều, chậm nếu heuristic yếu, khó tận dụng bộ nhớ như A*.
 ![IDAStar](gif_files/IDASTAR.gif)
 
-# Thuật toán Greedy Search
+## Thuật toán Greedy Search
 - Ý tưởng: Greedy Search (Tìm kiếm tham lam) luôn chọn trạng thái có vẻ tốt nhất tại thời điểm hiện tại dựa trên hàm heuristic, không quan tâm đến chi phí đường đi từ điểm bắt đầu (khác với A*).
 - Nguyên lý hoạt động:Sử dụng hàng đợi ưu tiên để lưu trữ các trạng thái theo giá trị heuristic h(n), luôn mở rộng trạng thái có h(n) nhỏ nhất trong hàng đợi, đánh dấu các trạng thái đã duyệt để tránh lặp.
 Dừng khi tìm thấy trạng thái đích hoặc hết trạng thái để duyệt
