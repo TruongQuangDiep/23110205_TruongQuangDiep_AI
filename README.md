@@ -304,20 +304,20 @@ Q(s,a)=Q(s,a)+α×(reward+γ×max a′Q(s′,a′)−Q(s,a))
 - Còn các thuật toán còn lại như Generate-And-Test, Backtracking, AC-3, Genetic Algorithm, Belief State, Search With Partial Observation là em không áp dụng so sánh hiệu suất vì giao diện với cách thức hoạt động của các thuật toán này nó khác so với các thuật toán bên trên.
 - Sau khi giao diện so sánh hiện ra em đã nhận được kết quả:
 ![Compare](gif_files/Compare.gif)
-- Đối với Các thuật toán tìm kiếm trong môi trường không có thông tin mà chạy được ra kết quả thì:
+### Đối với Các thuật toán tìm kiếm trong môi trường không có thông tin mà chạy được ra kết quả thì:
 + DFS là chạy lâu nhất với tận mấy chục giây, mà duyệt qua mấy chục ngìn nodes, và giải phải tìm thấy cũng rất lâu, điều này nói đúng mặt bản chất của thuật toán này là duyệt theo chiều sâu ở nhánh hiện tại cho đến khi không tìm thấy node nào nữa thì quay lại, tại DFS em không giới hạn độ sâu nên nó chạy tuy lâu nhưng sẽ ra kết quả.
 + BFS là chạy ít thời gian nhất có khoảng 1.1 giây thôi, và nhược điểm là duyệt theo chiều rộng nên qua 140 nghìn node tốn bộ nhớ.
 + IDDFS là lấy 2 phần ưu điểm của BDF và DFS để chạy thời gian tuy có lớn hơn DFS vài giây nhưng được ưu điểm là có duyệt qua ít node thôi nên đỡ tốn bộ nhớ. Nên em thấy IDDFS là tối ưu nhất.
 + Còn UCS chạy với thời gian với sô node đã duyệt cũng gần giống với BFS nên cũng ko tối ưu nhất.
 → IDDFS là lựa chọn tốt nhất vì: Đảm bảo tìm được đường đi ngắn nhất như BFS, tiết kiệm bộ nhớ như DFS.
 
-- Đối với Các thuật toán tìm kiếm trong môi trường có thông tin mà chạy được ra kết quả thì:
+### Đối với Các thuật toán tìm kiếm trong môi trường có thông tin mà chạy được ra kết quả thì:
 + A* có thời gian chạy trung bình, duyệt qua nhiều nodes nên hơi tốn tài nguyên nhưng tìm được lời giải trong 23 bước, cho thấy tính hiệu quả của hàm heuristic trong việc định hướng tìm kiếm.
 + Greedy Search là chạy ít thời gian nhất, và giải pháp có 75 bước hơi cao, do chỉ quan tâm đến heuristic mà không quan tâm chi phí đường đi.
 + IDA* có thời gian chạy trung bình, nodes duyệt qua có 23 nodes, lời giải ngắn nhất có 23 bước, cho ta thấy được ưu điểm của A* (tối ưu) và tiết kiệm bộ nhớ.
 → Như vậy, trong 3 thuật toán này, IDA* tỏ ra hiệu quả nhất khi cân bằng được các yếu tố: thời gian xử lý, bộ nhớ sử dụng và chất lượng lời giải.
 
-- Đối với Các thuật toán tìm kiếm cục bộ thì có 3 thuật toán leo đồi với 1 thuật toán luyện thép là khó ra kết quả, có mỗi Beam Search ra kết quả, còn Genetic Algorithm là giao diện khác, nên không thể so sánh trên số liệu mà mình có thể so sánh trên lý thuyết: 
+### Đối với Các thuật toán tìm kiếm cục bộ thì có 3 thuật toán leo đồi với 1 thuật toán luyện thép là khó ra kết quả, có mỗi Beam Search ra kết quả, còn Genetic Algorithm là giao diện khác, nên không thể so sánh trên số liệu mà mình có thể so sánh trên lý thuyết: 
 Trong 3 thuật toán thì:
 + SHC chọn trạng thái con đầu tiên tốt hơn trạng thái hiện tại và di chuyển ngay, nhanh nhất nhưng dễ bị kẹt nhất
 + SAHC xét tất cả các trạng thái con để tìm trạng thái tốt nhất, chậm nhất nhưng cho kết quả tốt nhất khi tìm được lời giải
@@ -330,13 +330,13 @@ Trong 3 thuật toán thì:
 - SA tốt cho việc cân bằng giữa tìm kiếm cục bộ và toàn cục
 - Các thuật toán Hill Climbing phù hợp cho bài toán đơn giản, cần kết quả nhanh
 
-- Đối với Các thuật toán tìm kiếm trong trong môi trường phức tạp cũng không thể so sánh qua số liệu chỉ có thể so sánh qua lý thuyết:
+### Đối với Các thuật toán tìm kiếm trong trong môi trường phức tạp cũng không thể so sánh qua số liệu chỉ có thể so sánh qua lý thuyết:
 + And-Or Search sử dụng độ sâu tối đa để tránh duyệt quá sâu, duyệt có ưu tiên thứ tự heuristic, chậm khi không gian trạng thái lớn
 + Belief State là thuật toán không có dấu hiệu gì ban đầu, tìm kiếm áp dụng từ các thuật toán nhỏ hơn nên và đặt niềm tin và luôn hướng tới kết quả tốt hơn.
 + Search With Partial Observation : biết được 1 phần hay 1 dấu hiệu của trạng thái cuối và từ đó tìm cách hướng tới kết quả tốt hơn.
 → Search With Partial Observation là tốt nhất trong 3 thuật toán trên vì biết được 1 phần tăng khả năng tìm kiếm và tối ưu thời gian, sẽ trả về kết quả sớm hơn.
 
-- Đối với Các thuật toán tìm kiếm trong trong môi trường có ràng buộc thì em làm có giao diện khác với cách thức hoạt động hơi khác của từng thuật toán:
+### Đối với Các thuật toán tìm kiếm trong trong môi trường có ràng buộc thì em làm có giao diện khác với cách thức hoạt động hơi khác của từng thuật toán:
 +  Generate-And-Test ban đầu sinh ra các hoán vị và kiểm tra ràng buộc mà em đưa ra để lấy kết quả, không hiệu quả với không gian trạng thái lớn, Tốn thời gian kiểm tra nhiều cấu hình không khả thi.
 + Backtracking: gán giá trị cho từng biến tuần tự thì sau khi gán mới kiểm tra ràng buộc, tìm kiếm có hệ thống, đảm bảo tìm ra lời giải nếu tồn tại, thời gian xử lý tăng theo cấp số mũ.
 + AC-3: Duy trì tính nhất quán cung (arc consistency), giảm không gian tìm kiếm bằng cách loại bỏ giá trị không khả thi, có thể kết hợp với các thuật toán khác, có thể tốn thời gian với ràng buộc phức tạp
