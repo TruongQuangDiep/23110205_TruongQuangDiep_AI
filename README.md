@@ -299,12 +299,57 @@ Q(s,a)=Q(s,a)+α×(reward+γ×max a′Q(s′,a′)−Q(s,a))
 + Nhược điểm: Cần nhiều thời gian để học chính sách tốt nếu không có chiến lược khám phá hiệu quả, không hiệu quả nếu không gian trạng thái quá lớn (do bảng Q quá lớn)
 ![Q_Learning](gif_files/Q_Learning.gif)
 
+# 2.7. So sánh hiệu suất các thuật toán 
+- Các thuật em áp dụng so sánh cho bài toán 8 puzzle bao gồm: BFS, DFS, IDDFS, UCS, A*, IDA*, Greedy Search, 3 thuật toán leo đồi Hill Climbing, SA,Beam Search, And-Or Search, Q-Learning.
+- Còn các thuật toán còn lại như Generate-And-Test, Backtracking, AC-3, Genetic Algorithm, Belief State, Search With Partial Observation là em không áp dụng so sánh hiệu suất vì giao diện với cách thức hoạt động của các thuật toán này nó khác so với các thuật toán bên trên.
+- Sau khi giao diện so sánh hiện ra em đã nhận được kết quả:
+![Compare](gif_files/Compare.gif)
+- Đối với Các thuật toán tìm kiếm trong môi trường không có thông tin mà chạy được ra kết quả thì:
++ DFS là chạy lâu nhất với tận mấy chục giây, mà duyệt qua mấy chục ngìn nodes, và giải phải tìm thấy cũng rất lâu, điều này nói đúng mặt bản chất của thuật toán này là duyệt theo chiều sâu ở nhánh hiện tại cho đến khi không tìm thấy node nào nữa thì quay lại, tại DFS em không giới hạn độ sâu nên nó chạy tuy lâu nhưng sẽ ra kết quả.
++ BFS là chạy ít thời gian nhất có khoảng 1.1 giây thôi, và nhược điểm là duyệt theo chiều rộng nên qua 140 nghìn node tốn bộ nhớ.
++ IDDFS là lấy 2 phần ưu điểm của BDF và DFS để chạy thời gian tuy có lớn hơn DFS vài giây nhưng được ưu điểm là có duyệt qua ít node thôi nên đỡ tốn bộ nhớ. Nên em thấy IDDFS là tối ưu nhất.
++ Còn UCS chạy với thời gian với sô node đã duyệt cũng gần giống với BFS nên cũng ko tối ưu nhất.
+→ IDDFS là lựa chọn tốt nhất vì: Đảm bảo tìm được đường đi ngắn nhất như BFS, tiết kiệm bộ nhớ như DFS.
+
+- Đối với Các thuật toán tìm kiếm trong môi trường có thông tin mà chạy được ra kết quả thì:
++ A* có thời gian chạy trung bình, duyệt qua nhiều nodes nên hơi tốn tài nguyên nhưng tìm được lời giải trong 23 bước, cho thấy tính hiệu quả của hàm heuristic trong việc định hướng tìm kiếm.
++ Greedy Search là chạy ít thời gian nhất, và giải pháp có 75 bước hơi cao, do chỉ quan tâm đến heuristic mà không quan tâm chi phí đường đi.
++ IDA* có thời gian chạy trung bình, nodes duyệt qua có 23 nodes, lời giải ngắn nhất có 23 bước, cho ta thấy được ưu điểm của A* (tối ưu) và tiết kiệm bộ nhớ.
+→ Như vậy, trong 3 thuật toán này, IDA* tỏ ra hiệu quả nhất khi cân bằng được các yếu tố: thời gian xử lý, bộ nhớ sử dụng và chất lượng lời giải.
+
+- Đối với Các thuật toán tìm kiếm cục bộ thì có 3 thuật toán leo đồi với 1 thuật toán luyện thép là khó ra kết quả, có mỗi Beam Search ra kết quả, còn Genetic Algorithm là giao diện khác, nên không thể so sánh trên số liệu mà mình có thể so sánh trên lý thuyết: 
+Trong 3 thuật toán thì:
++ SHC chọn trạng thái con đầu tiên tốt hơn trạng thái hiện tại và di chuyển ngay, nhanh nhất nhưng dễ bị kẹt nhất
++ SAHC xét tất cả các trạng thái con để tìm trạng thái tốt nhất, chậm nhất nhưng cho kết quả tốt nhất khi tìm được lời giải
++ StoHC chọn ngẫu nhiên một trong các trạng thái tốt hơn, cân bằng được giữa tốc độ và khả năng thoát khỏi cực trị địa phương
++ Simulated Annealing (SA): Sử dụng nhiệt độ (T) và tỷ lệ làm lạnh (cooling_rate) để điều khiển quá trình tìm kiếm, có khả năng thoát khỏi cực trị địa phương tốt nhất trong các thuật toán hill climbing.
++ Beam Search: Duy trì số lượng trạng thái tốt nhất cố định, Cân bằng giữa tìm kiếm và tài nguyên, phụ thuộc vào beam_width
++ Genetic Algorithm: Sử dụng quần thể (population_size=40), có các toán tử di truyền: selection, crossover (lai ghép), mutation (đột biến). Tiến hóa qua nhiều thế hệ (generations=1000), khả năng tìm kiếm toàn cục tốt, thời gian xử lý lâu do phải tiến hóa nhiều thế hệ, nhưng mà em đã tối ưu nó bằng cách mỗi generation chọn tốt hơn thì lấy 40 cái tốt nhất lai với nhau xong cứ lặp lại cho đến khi ra được tốt nhất thôi.
+→ Trong 6 thuật toán này:
+- Genetic Algorithm phù hợp nhất cho bài toán phức tạp, không gian tìm kiếm lớn
+- SA tốt cho việc cân bằng giữa tìm kiếm cục bộ và toàn cục
+- Các thuật toán Hill Climbing phù hợp cho bài toán đơn giản, cần kết quả nhanh
+
+- Đối với Các thuật toán tìm kiếm trong trong môi trường phức tạp cũng không thể so sánh qua số liệu chỉ có thể so sánh qua lý thuyết:
++ And-Or Search sử dụng độ sâu tối đa để tránh duyệt quá sâu, duyệt có ưu tiên thứ tự heuristic, chậm khi không gian trạng thái lớn
++ Belief State là thuật toán không có dấu hiệu gì ban đầu, tìm kiếm áp dụng từ các thuật toán nhỏ hơn nên và đặt niềm tin và luôn hướng tới kết quả tốt hơn.
++ Search With Partial Observation : biết được 1 phần hay 1 dấu hiệu của trạng thái cuối và từ đó tìm cách hướng tới kết quả tốt hơn.
+→ Search With Partial Observation là tốt nhất trong 3 thuật toán trên vì biết được 1 phần tăng khả năng tìm kiếm và tối ưu thời gian, sẽ trả về kết quả sớm hơn.
+
+- Đối với Các thuật toán tìm kiếm trong trong môi trường có ràng buộc thì em làm có giao diện khác với cách thức hoạt động hơi khác của từng thuật toán:
++  Generate-And-Test ban đầu sinh ra các hoán vị và kiểm tra ràng buộc mà em đưa ra để lấy kết quả, không hiệu quả với không gian trạng thái lớn, Tốn thời gian kiểm tra nhiều cấu hình không khả thi.
++ Backtracking: gán giá trị cho từng biến tuần tự thì sau khi gán mới kiểm tra ràng buộc, tìm kiếm có hệ thống, đảm bảo tìm ra lời giải nếu tồn tại, thời gian xử lý tăng theo cấp số mũ.
++ AC-3: Duy trì tính nhất quán cung (arc consistency), giảm không gian tìm kiếm bằng cách loại bỏ giá trị không khả thi, có thể kết hợp với các thuật toán khác, có thể tốn thời gian với ràng buộc phức tạp
+→ Trong 3 thuật toán này, Backtracking tỏ ra hiệu quả nhất cho bài toán 8-puzzle vì: Kết hợp được việc tìm kiếm có hệ thống, đảm bảo tìm ra lời giải nếu tồn tại, tiết kiệm bộ nhớ hơn so với Generate and Test.
+
 # 3. Kết luận
 - Đồ án này đã làm rõ được phần nào cách thức hoạt động và mô phỏng của các thuật toán tìm kiếm, để ta có thể biết được thuật toán nào có những ưu và nhược điểm riêng, độ phức tạp ra sao, để biết và áp dụng vào những bài toán khác nhau và phù hợp với mỗi thuật toán.
 - Việc nắm vững kiến thức từng thuật toán trong này là vô cùng quan trọng, bởi không chỉ giúp chúng ta lựa chọn thuật toán phù hợp nhất mà còn bảo đảm hiệu quả và tối ưu trong việc giải quyết vấn đề. Trong quá trình thực hiện đồ án này, có rất nhiều khó khăn phải trải qua, nhưng cũng đã tìm cách và giải quyết khắc phục những khó khăn đó.
 - Đồ án này không chỉ là tâm huyết của em mà cũng là sự cố gắng hết sức, nếu có sai xót hay chỗ nào còn chưa đúng thì đó cũng là một phần kinh nghiệm để giúp em hoàn thành tốt hơn nhưng đồ án sau.
 
 # 4. Tài liệu tham khảo
+- Các nút button trong giao diện chính là em thiết kế từ tham khảo trên Figma.
+
 https://wiki.vnoi.info/algo/graph-theory/breadth-first-search.md
 (Thuật toán BFS)
 
