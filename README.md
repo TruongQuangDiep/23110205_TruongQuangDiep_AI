@@ -304,7 +304,9 @@ Q(s,a)=Q(s,a)+α×(reward+γ×max a′Q(s′,a′)−Q(s,a))
 - Còn các thuật toán còn lại như Generate-And-Test, Backtracking, AC-3, Genetic Algorithm, Belief State, Search With Partial Observation là em không áp dụng so sánh hiệu suất vì giao diện với cách thức hoạt động của các thuật toán này nó khác so với các thuật toán bên trên.
 - Sau khi giao diện so sánh hiện ra em đã nhận được kết quả:
 ![Compare](gif_files/Compare.gif)
+
 ### Đối với Các thuật toán tìm kiếm trong môi trường không có thông tin mà chạy được ra kết quả thì:
+![Compare_not_info](gif_files/Compare_not_info.png)
 + DFS là chạy lâu nhất với tận mấy chục giây, mà duyệt qua mấy chục ngìn nodes, và giải phải tìm thấy cũng rất lâu, điều này nói đúng mặt bản chất của thuật toán này là duyệt theo chiều sâu ở nhánh hiện tại cho đến khi không tìm thấy node nào nữa thì quay lại, tại DFS em không giới hạn độ sâu nên nó chạy tuy lâu nhưng sẽ ra kết quả.
 + BFS là chạy ít thời gian nhất có khoảng 1.1 giây thôi, và nhược điểm là duyệt theo chiều rộng nên qua 140 nghìn node tốn bộ nhớ.
 + IDDFS là lấy 2 phần ưu điểm của BDF và DFS để chạy thời gian tuy có lớn hơn DFS vài giây nhưng được ưu điểm là có duyệt qua ít node thôi nên đỡ tốn bộ nhớ. Nên em thấy IDDFS là tối ưu nhất.
@@ -312,6 +314,7 @@ Q(s,a)=Q(s,a)+α×(reward+γ×max a′Q(s′,a′)−Q(s,a))
 → IDDFS là lựa chọn tốt nhất vì: Đảm bảo tìm được đường đi ngắn nhất như BFS, tiết kiệm bộ nhớ như DFS.
 
 ### Đối với Các thuật toán tìm kiếm trong môi trường có thông tin mà chạy được ra kết quả thì:
+![Compare_info](gif_files/Compare_info.png)
 + A* có thời gian chạy trung bình, duyệt qua nhiều nodes nên hơi tốn tài nguyên nhưng tìm được lời giải trong 23 bước, cho thấy tính hiệu quả của hàm heuristic trong việc định hướng tìm kiếm.
 + Greedy Search là chạy ít thời gian nhất, và giải pháp có 75 bước hơi cao, do chỉ quan tâm đến heuristic mà không quan tâm chi phí đường đi.
 + IDA* có thời gian chạy trung bình, nodes duyệt qua có 23 nodes, lời giải ngắn nhất có 23 bước, cho ta thấy được ưu điểm của A* (tối ưu) và tiết kiệm bộ nhớ.
